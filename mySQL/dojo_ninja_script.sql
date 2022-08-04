@@ -1,0 +1,28 @@
+INSERT INTO dojos(name) VALUE('dojo1'),('dojo2'),('dojo3');
+SELECT* FROM dojos;
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM dojos WHERE id = 7;
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM dojos WHERE id IN (12,11,10,9,7,4,3,2,1); 
+INSERT INTO dojos (name,created_at,updated_at) VALUE('dojo1',now(),now());
+INSERT INTO dojos (name,created_at,updated_at) VALUE('dojo2',now(),now());
+INSERT INTO dojos (name,created_at,updated_at) VALUE('dojo3',now(),now());
+INSERT INTO ninjas (first_name,last_name,age,created_at,updated_at,dojo_id) VALUE('tom','k','25',now(),now(),5);
+INSERT INTO ninjas (first_name,last_name,age,created_at,updated_at,dojo_id) VALUE('mike','c','28',now(),now(),5);
+INSERT INTO ninjas (first_name,last_name,age,created_at,updated_at,dojo_id) VALUE('dwight','shrute','35',now(),now(),5);
+SELECT * FROM ninjas;
+INSERT INTO ninjas (first_name,last_name,age,created_at,updated_at,dojo_id) VALUE('ninja21','k','25',now(),now(),6);
+INSERT INTO ninjas (first_name,last_name,age,created_at,updated_at,dojo_id) VALUE('ninja22','c','28',now(),now(),6);
+INSERT INTO ninjas (first_name,last_name,age,created_at,updated_at,dojo_id) VALUE('ninja23','shrute','35',now(),now(),6);
+
+INSERT INTO ninjas (first_name,last_name,age,created_at,updated_at,dojo_id) VALUE('ninja31','k','25',now(),now(),8);
+INSERT INTO ninjas (first_name,last_name,age,created_at,updated_at,dojo_id) VALUE('ninja32','c','28',now(),now(),8);
+INSERT INTO ninjas (first_name,last_name,age,created_at,updated_at,dojo_id) VALUE('ninja33','shrute','35',now(),now(),8);
+SELECT * FROM ninjas WHERE dojo_id = 5; 
+SELECT * FROM ninjas WHERE dojo_id = 8; 
+SELECT dojo_id FROM ninjas WHERE id = 9;
+DELETE FROM ninjas WHERE id BETWEEN 8 AND 13;
+UPDATE dojos SET name = 'dojo1' WHERE id = 5;
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM dojos WHERE id BETWEEN 14 AND 17;
+SELECT ninjas.first_name, ninjas.last_name, dojos.name FROM ninjas JOIN dojos on dojos.id = ninjas.dojo_id ORDER BY ninjas.id DESC LIMIT 1;

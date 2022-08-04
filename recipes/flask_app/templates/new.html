@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>New Recipe</title>
+</head>
+<body class="bg-info">
+    <h1 class="text-white">New Recipe!</h1>
+    <div class="alert">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="alert-danger">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+
+<form action="/recipes/create" method="POST" class="col-6 mx-auto">
+    <br>
+
+    <label for="name">Name:</label>
+    <input type="text" name="name">
+    <br>
+    <label for="description">Description:</label>
+    <input type="textarea" name="description">
+    <br>
+    <label for="thirty_min">Under 30mins:</label>
+    <input type="radio" name="thirty_min" id="time" value="1">
+    <label for="">Yes</label>
+    <input type="radio" name="thirty_min" id="time" value="0">
+    <label for="">No</label>
+    <br>
+    <label for="insctructions" >Instructions:</label>
+    <input type="textarea" name="instructions">
+    <br>
+    <label for="date_cooked" >Date Cooked Made:</label>
+    <input type="date" name="date_cooked">
+    <br>
+    <input type="submit" value="Create" class="btn btn-success">
+</form>
+    
+</body>
+</html>
